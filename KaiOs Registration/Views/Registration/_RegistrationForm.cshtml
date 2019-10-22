@@ -1,0 +1,148 @@
+﻿@using KaiOs_Registration.Models;
+@model Registration
+@{ var attributes = Model.CurrentStep == 1 ? (object)new { @class = "form-control" } : (object)new { @class = "form-control", @readonly = "readonly" }; }
+@{ var attributesPhoneNumber = Model.CurrentStep == 1 || Model.CurrentStep == 2 ? (object)new { @class = "form-control" } : (object)new { @class = "form-control", @readonly = "readonly" }; }
+@{ var attributesSmsCode = Model.CurrentStep == 3 ? (object)new { @class = "form-control" } : (object)new { @class = "form-control", @readonly = "readonly" }; }
+@{ var attributesVoucherCode = Model.CurrentStep == 0 ? (object)new { @class = "form-control" } : (object)new { @class = "form-control", @readonly = "readonly" }; }
+
+
+<h1>Registration</h1>
+<form id="registrationForm" method="post" action="">
+
+    <div class="messages">
+
+        <div style="@(ViewData.ModelState != null && !ViewData.ModelState.IsValid ? "" : "display:none")" id="validationSummary" class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" id="clearErrors">×</button>
+            @Html.ValidationSummary(false, "Errors: ")
+        </div>
+    </div>
+    <div class="controls">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="hidden" value="@Model.CurrentStep" name="CurrentStep" />
+                    <input type="hidden" value="@Model.DeviceID" name="DeviceID" />
+                    <input type="hidden" value="@Model.UserID" name="UserID" />
+                    <input type="hidden" value="@Model.Password" name="Password" />
+                    @Html.LabelFor(model => model.ReferenceCode)*
+                    @Html.EditorFor(model => model.ReferenceCode, new { htmlAttributes = attributesVoucherCode })
+                    @Html.ValidationMessageFor(model => model.ReferenceCode, "", new { @class = "text-danger" })
+                    <span class="glyphicon @(Model.CurrentStep == 0 ? "glyphicon-remove" : "glyphicon-ok")" id="responseSpan"></span>
+                    <div class="col-sm-12">
+                        <input type="button" @(Model.CurrentStep == 0 ? "" : "disabled") value="Validate Code" id="btnValidateReferenceCode" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="controlsContainer" style="@(Model.CurrentStep > 0 ? "" : "display:none")">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FirstName)*
+
+
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = attributes } )
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LastName)*
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = attributes })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EmailAddress)*
+                        @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = attributes })
+                        @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Postcode)*
+                        @Html.EditorFor(model => model.Postcode, new { htmlAttributes = attributes })
+                        @Html.ValidationMessageFor(model => model.Postcode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.DropDownListFor(m => m.Country, Registration.GetCountrySelectItems(), attributes )
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DevicePhoneNumber)*
+                        @Html.EditorFor(model => model.DevicePhoneNumber, new { htmlAttributes = attributesPhoneNumber })
+                        @Html.ValidationMessageFor(model => model.DevicePhoneNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            @if (Model.CurrentStep >= 3)
+            {
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SmsCode)*
+                            @Html.EditorFor(model => model.SmsCode, new { htmlAttributes = attributesSmsCode })
+                            @Html.ValidationMessageFor(model => model.SmsCode, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            }
+            @if (Model.CurrentStep >= 4)
+            {
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.VoucherCode)*
+                            @Html.EditorFor(model => model.VoucherCode, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.VoucherCode, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="row">
+
+                <div class="col-md-12">
+                    @if (Model.CurrentStep == 1)
+                    {
+                    <input class="btn btn-success btn-send submitUserRegistration" type="button" value="Create User (With SMS)" id="btnCreateUser">
+                    }
+                    @if (Model.CurrentStep == 2)
+                    {
+                        <input class="btn btn-success btn-send submitUserRegistration" type="button" value="Validate Phone number" id="btnValidateSmsCode">
+                    }
+                    @if (Model.CurrentStep == 3)
+                    {
+                        <input class="btn btn-success btn-send submitUserRegistration" type="button" value="Validate SMS Code" id="btnValidateSmsCode">
+                    }
+                    @if (Model.CurrentStep == 4)
+                    {
+                        <input class="btn btn-success btn-send submitUserRegistration" type="button" value="Complete registration" id="btnValidateVoucher">
+                    }
+
+                    @Html.ActionLink("Reset form", "RegistrationPage", "Registration",  new { @class = "btn btn-danger" } )
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-muted">
+                        <strong>*</strong> These fields are required.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

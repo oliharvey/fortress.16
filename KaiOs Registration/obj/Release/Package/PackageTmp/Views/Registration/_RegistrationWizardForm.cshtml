@@ -1,0 +1,192 @@
+﻿@using KaiOs_Registration.Models;
+@model Registration
+@{ var attributes = Model.CurrentStep == 1 ? (object)new { @class = "form-control" } : (object)new { @class = "form-control", @readonly = "readonly" }; }
+@{ var attributesPhoneNumber = Model.CurrentStep == 1 || Model.CurrentStep == 2 ? (object)new { @class = "form-control" } : (object)new { @class = "form-control", @readonly = "readonly" }; }
+@{ var attributesSmsCode = Model.CurrentStep == 3 ? (object)new { @class = "form-control" } : (object)new { @class = "form-control", @readonly = "readonly" }; }
+@{ var attributesVoucherCode = Model.CurrentStep == 0 ? (object)new { @class = "form-control" } : (object)new { @class = "form-control", @readonly = "readonly" }; }
+
+<div class="container">
+    <div class="row">
+        <section>
+            <div class="wizard">
+                <div class="wizard-inner">
+                    <div class="connecting-line"></div>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="@(Model.CurrentStep == 0  ? "active" : "disabled")">
+                            <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                                <span class="round-tab">
+                                    <i class="glyphicon glyphicon-folder-open"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li role="presentation" class="@(Model.CurrentStep == 1 || Model.CurrentStep == 2  ? "active" : "disabled")">
+                            <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                                <span class="round-tab">
+                                    <i class="glyphicon glyphicon-pencil"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li role="presentation" class="@(Model.CurrentStep == 3 ? "active" : "disabled")">
+                            <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
+                                <span class="round-tab">
+                                    <i class="glyphicon glyphicon-picture"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li role="presentation" class="@(Model.CurrentStep == 4 ? "active" : "disabled")">
+                            <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab" title="Step 4">
+                                <span class="round-tab">
+                                    <i class="glyphicon glyphicon-picture"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li role="presentation" class="@(Model.CurrentStep == 5 ? "active" : "disabled")">
+                            <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                                <span class="round-tab">
+                                    <i class="glyphicon glyphicon-ok"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <form id="registrationForm" method="post" action="">
+                    <div class="messages">
+
+                        <div style="@(ViewData.ModelState != null && !ViewData.ModelState.IsValid ? "" : "display:none")" id="validationSummary" class="alert alert-danger">
+                            <button type="button" class="close" data-dismiss="alert" id="clearErrors">×</button>
+                            @Html.ValidationSummary(false, "Errors: ")
+                        </div>
+                    </div>
+                    <input type="hidden" value="@Model.CurrentStep" name="CurrentStep" />
+                    <input type="hidden" value="@Model.DeviceID" name="DeviceID" />
+                    <input type="hidden" value="@Model.UserID" name="UserID" />
+                    <input type="hidden" value="@Model.Password" name="Password" />
+                    <div class="tab-content">
+                        <div class="tab-pane @(Model.CurrentStep == 0 ? "active" : "")" role="tabpanel" id="step1">
+                            <h3>Step 1</h3>
+                            <p>Reference Code</p>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="hidden" value="@Model.CurrentStep" name="CurrentStep" />
+                                        <input type="hidden" value="@Model.DeviceID" name="DeviceID" />
+                                        <input type="hidden" value="@Model.UserID" name="UserID" />
+                                        <input type="hidden" value="@Model.Password" name="Password" />
+                                        @Html.LabelFor(model => model.ReferenceCode)*
+                                        @Html.EditorFor(model => model.ReferenceCode, new { htmlAttributes = attributesVoucherCode })
+                                        @Html.ValidationMessageFor(model => model.ReferenceCode, "", new { @class = "text-danger" })
+                                        <span class="glyphicon @(Model.CurrentStep == 0 ? "glyphicon-remove" : "glyphicon-ok")" id="responseSpan"></span>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="list-inline pull-right">
+                                <li><input type="button" @(Model.CurrentStep == 0 ? "" : "disabled") value="Validate Code" id="btnValidateReferenceCode" class="btn btn-success" /></li>
+                                <li>@Html.ActionLink("Reset form", "RegistrationWizard", "Registration", new { @class = "btn btn-danger" })</li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane @(Model.CurrentStep == 1 || Model.CurrentStep == 2  ? "active" : "")" role="tabpanel" id="step2">
+                            <h3>Step 2</h3>
+                            <p>User Creation</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.FirstName)*
+
+
+                                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = attributes })
+                                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.LastName)*
+                                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = attributes })
+                                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.EmailAddress)*
+                                        @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = attributes })
+                                        @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Postcode)*
+                                        @Html.EditorFor(model => model.Postcode, new { htmlAttributes = attributes })
+                                        @Html.ValidationMessageFor(model => model.Postcode, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.DropDownListFor(m => m.Country, Registration.GetCountrySelectItems(), attributes)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.DevicePhoneNumber)*
+                                        @Html.EditorFor(model => model.DevicePhoneNumber, new { htmlAttributes = attributesPhoneNumber })
+                                        @Html.ValidationMessageFor(model => model.DevicePhoneNumber, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="list-inline pull-right">
+                                <li><button type="button" @(Model.CurrentStep == 1 || Model.CurrentStep == 2 ? "" : "disabled") class="btn btn-primary submitUserRegistration">Save and continue</button></li>
+                                @Html.ActionLink("Reset form", "RegistrationWizard", "Registration", new { @class = "btn btn-danger" })
+                            </ul>
+                        </div>
+                        <div class="tab-pane @(Model.CurrentStep == 3 ? "active" : "")" role="tabpanel" id="step3">
+                            <h3>Step 3</h3>
+                            <p>SMS Validation</p>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.SmsCode)*
+                                        @Html.EditorFor(model => model.SmsCode, new { htmlAttributes = attributesSmsCode })
+                                        @Html.ValidationMessageFor(model => model.SmsCode, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="list-inline pull-right">
+                                <li><button type="button" @(Model.CurrentStep == 3 ? "" : "disabled") class="btn btn-primary btn-info-full submitUserRegistration">Save and continue</button></li>
+                                @Html.ActionLink("Reset form", "RegistrationWizard", "Registration", new { @class = "btn btn-danger" })
+                            </ul>
+                        </div>
+                        <div class="tab-pane @(Model.CurrentStep == 4 ? "active" : "")" role="tabpanel" id="step4">
+                            <h3>Step 4</h3>
+                            <p>Voucher</p>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.VoucherCode)*
+                                        @Html.EditorFor(model => model.VoucherCode, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.VoucherCode, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="list-inline pull-right">
+                                <li><button type="button" @(Model.CurrentStep == 4 ? "" : "disabled") class="btn btn-primary btn-info-full submitUserRegistration">Save and continue</button></li>
+                                @Html.ActionLink("Reset form", "RegistrationWizard", "Registration", new { @class = "btn btn-danger" })
+                            </ul>
+                        </div>
+                        <div class="tab-pane" role="tabpanel" id="complete">
+                            <h3>Complete</h3>
+                            <p>Registration has been completed - The users temporary password is : @Model.Password</p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>

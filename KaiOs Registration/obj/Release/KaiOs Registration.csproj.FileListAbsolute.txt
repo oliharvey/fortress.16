@@ -1,0 +1,43 @@
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\ApplicationInsights.config
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\KaiOs Registration.dll.config
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\KaiOs Registration.dll
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\KaiOs Registration.pdb
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\Antlr3.Runtime.dll
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\Microsoft.AI.DependencyCollector.dll
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\Microsoft.AI.Web.dll
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\Microsoft.AI.WindowsServer.dll
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\Microsoft.ApplicationInsights.dll
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\Microsoft.Web.Infrastructure.dll
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\Newtonsoft.Json.dll
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\System.Net.Http.Formatting.dll
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\System.Web.Helpers.dll
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\System.Web.Mvc.dll
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\System.Web.Optimization.dll
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\System.Web.Razor.dll
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\System.Web.WebPages.Deployment.dll
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\System.Web.WebPages.dll
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\System.Web.WebPages.Razor.dll
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\WebGrease.dll
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\System.Net.Http.Formatting.xml
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\System.Web.Helpers.xml
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\System.Web.Mvc.xml
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\System.Web.Optimization.xml
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\System.Web.Razor.xml
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\System.Web.WebPages.xml
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\System.Web.WebPages.Deployment.xml
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\System.Web.WebPages.Razor.xml
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\Antlr3.Runtime.pdb
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\Newtonsoft.Json.xml
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\Microsoft.ApplicationInsights.xml
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\Microsoft.AI.DependencyCollector.xml
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\Microsoft.AI.WindowsServer.xml
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\bin\Microsoft.AI.Web.xml
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\obj\Release\KaiOs Registration.csproj.CoreCompileInputs.cache
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\obj\Release\KaiOs Registration.dll
+C:\Fortress\KaiOS Registation\KaiOs Registration\KaiOs Registration\obj\Release\KaiOs Registration.pdb
